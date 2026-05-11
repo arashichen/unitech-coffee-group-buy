@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>大店長晨會 × 台新餐飲設備｜設備團購獨家優惠</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #004C97;
+      --blue:   #00B5E2;
+      --bg:     #F5F9FC;
+      --pale:   #E0F4FB;
+      --text:   #1A1A1A;
+      --gray:   #6B7280;
+      --border: #D1E8F2;
+      --white:  #FFFFFF;
+      --red:    #E63535;
+      --gold:   #E6A800;
+      --r: 12px;
+      --serif: 'Noto Serif TC', 'Microsoft JhengHei', serif;
+      --sans:  'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ─── HEADER ─────────────────────────────── */
+    .hdr {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      padding: 0 16px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(0,0,0,.25);
+    }
+    .hdr-brand {
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 60%;
+    }
+    .hdr-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .hdr-tag { color: var(--blue); font-size: 12px; }
+    .hdr-badge {
+      display: none;
+      background: var(--red);
+      color: var(--white);
+      border-radius: 100px;
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      animation: pop .22s ease;
+    }
+    .hdr-badge.on { display: inline-block; }
+
+    /* ─── HERO ───────────────────────────────── */
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: 28px 20px 26px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 3px solid var(--blue);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50px; right: -50px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,181,226,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,181,226,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      border: 1px solid rgba(0,181,226,.5);
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      padding: 3px 12px;
+      border-radius: 2px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    .hero h1 em { color: var(--blue); font-style: normal; }
+    .hero-sub {
+      color: #9DCDE8;
+      font-size: 13px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .deadline-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,181,226,.14);
+      border: 1px solid rgba(0,181,226,.4);
+      border-radius: 100px;
+      padding: 9px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .deadline-pill b { color: var(--blue); }
+
+    /* ─── SECTION WRAPPER ────────────────────── */
+    .sec { padding: 22px 16px; }
+    .sec.alt { background: var(--white); }
+    .sec-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+    .sec-sub {
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 14px;
+    }
+
+    /* ─── CHECK BUTTON (label wraps checkbox) ── */
+    .chk-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      padding: 9px 12px;
+      cursor: pointer;
+      min-height: 44px;
+      width: 100%;
+      transition: background .18s, border-color .18s;
+      font-family: var(--sans);
+    }
+    .chk-btn input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      accent-color: var(--navy);
+      cursor: pointer;
+    }
+    .chk-btn span {
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text);
+    }
+    .chk-btn:has(input:checked) {
+      background: var(--pale);
+      border-color: var(--blue);
+    }
+
+    /* ─── ACCORDION (bundles) ────────────────── */
+    .acc {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      margin-bottom: 10px;
+      transition: border-color .2s;
+    }
+    .acc.open { border-color: var(--blue); }
+    .acc-hdr {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      cursor: pointer;
+      min-height: 56px;
+      user-select: none;
+    }
+    .acc-hdr:active { background: var(--bg); }
+    .acc.open .acc-hdr { border-bottom: 1px solid var(--border); }
+    .acc-title {
+      flex: 1;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .acc-meta { font-size: 12px; color: var(--gray); white-space: nowrap; }
+    .acc-arrow {
+      width: 20px;
+      height: 20px;
+      color: var(--gray);
+      transition: transform .28s cubic-bezier(.4,0,.2,1);
+      flex-shrink: 0;
+    }
+    .acc.open .acc-arrow { transform: rotate(180deg); }
+    .acc-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .32s cubic-bezier(.4,0,.2,1);
+    }
+    .acc.open .acc-body { max-height: 480px; }
+    .acc-inner { padding: 16px; }
+    .acc-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+    .acc-prices {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .acc-price-item { text-align: center; }
+    .acc-price-lbl { font-size: 11px; color: var(--gray); margin-bottom: 3px; }
+    .acc-price-val { font-size: 15px; font-weight: 800; color: var(--navy); }
+    .acc-price-val.strike { font-size: 12px; font-weight: 400; color: #bbb; text-decoration: line-through; }
+    .acc-price-val.red { color: var(--red); }
+
+    /* ─── SCROLLABLE TABS ────────────────────── */
+    .tabs-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      margin-bottom: 14px;
+      padding-bottom: 2px;
+    }
+    .tabs-wrap::-webkit-scrollbar { display: none; }
+    .tabs-row {
+      display: flex;
+      gap: 8px;
+      width: max-content;
+    }
+    .tab-btn {
+      padding: 6px 13px;
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      background: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray);
+      cursor: pointer;
+      white-space: nowrap;
+      min-height: 36px;
+      transition: all .18s;
+      font-family: var(--sans);
+    }
+    .tab-btn.active {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--white);
+    }
+    .t-count {
+      display: inline-block;
+      background: var(--pale);
+      color: var(--navy);
+      border-radius: 100px;
+      padding: 0 6px;
+      font-size: 10px;
+      margin-left: 3px;
+      font-weight: 700;
+    }
+    .tab-btn.active .t-count {
+      background: rgba(255,255,255,.2);
+      color: var(--white);
+    }
+    .t-sel {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      border-radius: 100px;
+      padding: 0 6px;
+      font-size: 10px;
+      margin-left: 3px;
+      font-weight: 700;
+      animation: pop .2s ease;
+    }
+
+    /* ─── EQUIPMENT LIST CARDS ───────────────── */
+    .eq-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .eq-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color .18s, background .18s;
+      display: flex;
+      flex-direction: column;
+    }
+    .eq-card.sel {
+      border-color: var(--blue);
+      background: #f0faff;
+    }
+
+    /* square image on top */
+    .eq-thumb {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .eq-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .eq-thumb-ph {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      color: #ccc;
+    }
+
+    /* badge overlaid on image */
+    .eq-badge {
+      position: absolute;
+      top: 7px;
+      left: 7px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: .02em;
+    }
+    .eq-badge.flagship { background: rgba(255,244,204,.95); color: #7A5200; border: 1px solid #FFD966; }
+    .eq-badge.featured  { background: rgba(255,240,235,.95); color: #C0390A; border: 1px solid #FFBA9F; }
+
+    /* card body */
+    .eq-body {
+      flex: 1;
+      padding: 8px 10px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    /* brand / model */
+    .eq-brand {
+      font-size: 14px;
+      color: var(--gray);
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
+    .eq-model {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.35;
+      margin-bottom: 6px;
+    }
+
+    /* labeled price area */
+    .eq-price-labeled { display: flex; flex-direction: column; gap: 3px; }
+    .eq-price-msrp { font-size: 12px; color: #bbb; text-decoration: line-through; }
+    .eq-price-sale { font-size: 12px; font-weight: 700; color: var(--red); line-height: 1.3; margin-top: 1px; }
+    .eq-price-sale span { font-size: 14px; font-weight: 800; display: block; }
+
+    /* footer row */
+    .eq-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+    }
+    .eq-detail-btn {
+      background: none;
+      border: none;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0;
+      font-family: var(--sans);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      min-height: 28px;
+    }
+    .eq-tog {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all .2s;
+    }
+    .eq-tog.on {
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+    .eq-tog svg {
+      width: 13px;
+      height: 13px;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ─── PRODUCT DETAIL MODAL ───────────────── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 500;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+    }
+    .modal-overlay.on { opacity: 1; pointer-events: auto; }
+
+    .modal-sheet {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 95vh;
+      height: 95dvh;
+      background: var(--white);
+      border-radius: 20px 20px 0 0;
+      z-index: 600;
+      transform: translateY(100%);
+      transition: transform .38s cubic-bezier(.32,0,.67,0);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .modal-sheet.on {
+      transform: translateY(0);
+      transition: transform .38s cubic-bezier(.33,1,.68,1);
+    }
+    .modal-scroll-area {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-y: contain;
+    }
+
+    .modal-topbar {
+      flex-shrink: 0;
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 40px 1fr 40px;
+      align-items: center;
+      padding: 12px 12px 8px;
+    }
+    .modal-handle {
+      grid-column: 2;
+      width: 36px; height: 4px;
+      background: #e0e0e0;
+      border-radius: 2px;
+      justify-self: center;
+    }
+    .modal-close {
+      grid-column: 3;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: var(--bg);
+      color: var(--gray);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-close svg {
+      width: 16px; height: 16px;
+      stroke: var(--gray);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      fill: none;
+    }
+
+    .modal-img {
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+      background: var(--bg);
+      display: block;
+    }
+    .modal-img-ph {
+      width: 100%;
+      height: 180px;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+    }
+
+    .modal-body { padding: 20px 16px 24px; }
+
+    .modal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .modal-badge.flagship { background: #FFF4CC; color: #7A5200; border: 1px solid #FFD966; }
+    .modal-badge.featured  { background: #FFF0EB; color: #C0390A; border: 1px solid #FFBA9F; }
+
+    .modal-brand { font-size: 13px; color: var(--gray); margin-bottom: 2px; }
+    .modal-model {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .modal-type {
+      display: inline-block;
+      background: var(--pale);
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 5px;
+      margin-bottom: 18px;
+    }
+
+    .modal-price-box {
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-price-right { text-align: right; }
+    .modal-msrp-lbl { font-size: 11px; color: var(--gray); margin-bottom: 2px; }
+    .modal-msrp-val { font-size: 13px; color: #bbb; text-decoration: line-through; }
+    .modal-sale-lbl { font-size: 11px; font-weight: 700; color: var(--red); margin-bottom: 2px; }
+    .modal-sale-val { font-size: 26px; font-weight: 800; color: var(--red); line-height: 1.1; }
+
+    .modal-section-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .modal-desc {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 22px;
+    }
+
+    .modal-spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 22px;
+      font-size: 13px;
+    }
+    .modal-spec-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .modal-spec-table td:first-child {
+      font-weight: 700;
+      color: var(--navy);
+      width: 38%;
+      white-space: nowrap;
+    }
+    .modal-spec-table td:last-child { color: var(--text); }
+
+    .modal-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-bottom: 24px;
+    }
+    .modal-link svg {
+      width: 14px; height: 14px;
+      stroke: var(--blue);
+      stroke-width: 2;
+      stroke-linecap: round;
+      fill: none;
+    }
+
+    .modal-footer {
+      position: sticky;
+      bottom: 0;
+      padding: 10px 16px;
+      padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      box-shadow: 0 -4px 16px rgba(0,0,0,.08);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .modal-footer-prices {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 8px 14px;
+    }
+    .modal-footer-price-item { display: flex; flex-direction: column; }
+    .modal-footer-price-lbl { font-size: 11px; color: var(--gray); margin-bottom: 2px; }
+    .modal-footer-msrp-val { font-size: 13px; color: #bbb; text-decoration: line-through; }
+    .modal-footer-sale-lbl { font-size: 11px; font-weight: 700; color: var(--red); margin-bottom: 2px; }
+    .modal-footer-sale-val { font-size: 22px; font-weight: 800; color: var(--red); line-height: 1.1; }
+    .modal-add-btn {
+      width: 100%;
+      height: 52px;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--sans);
+      transition: all .2s;
+      letter-spacing: .02em;
+    }
+    .modal-add-btn.add { background: var(--blue); color: var(--white); }
+    .modal-add-btn.remove {
+      background: var(--bg);
+      color: var(--gray);
+      border: 1.5px solid var(--border);
+    }
+
+    /* ─── FORM SECTION ───────────────────────── */
+    .form-sec {
+      background: var(--navy);
+      padding: 30px 16px 28px;
+    }
+    .form-sec-title {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--white);
+      text-align: center;
+      margin-bottom: 22px;
+      line-height: 1.35;
+    }
+    .form-sec-title em { color: var(--blue); font-style: normal; }
+    .form-card {
+      background: var(--white);
+      border-radius: var(--r);
+      padding: 20px;
+    }
+    .fg { margin-bottom: 16px; }
+    .fg label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .fg input, .fg select {
+      width: 100%;
+      height: 48px;
+      padding: 0 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--sans);
+      font-size: 16px;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color .2s, box-shadow .2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .fg input:focus, .fg select:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0,181,226,.12);
+    }
+    .select-wrap { position: relative; }
+    .select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid var(--gray);
+      pointer-events: none;
+    }
+    .form-submit {
+      width: 100%;
+      height: 52px;
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--sans);
+      transition: background .2s;
+      letter-spacing: .02em;
+    }
+    .form-submit:active { background: #0096b8; }
+
+    /* ─── FOOTER ─────────────────────────────── */
+    .footer {
+      background: #002d5c;
+      color: rgba(255,255,255,.55);
+      padding: 20px 16px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    /* ─── BOTTOM ACTION BAR ──────────────────── */
+    .bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--navy);
+      padding: 10px 16px;
+      padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      z-index: 200;
+      box-shadow: 0 -3px 16px rgba(0,0,0,.25);
+    }
+    .bar-info { flex: 1; min-width: 0; }
+    .bar-count { font-size: 12px; color: rgba(255,255,255,.6); line-height: 1.3; }
+    .bar-saving { font-size: 16px; font-weight: 800; color: var(--blue); line-height: 1.2; }
+    .bar-btn {
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      min-height: 44px;
+      white-space: nowrap;
+      font-family: var(--sans);
+      transition: background .18s;
+      flex-shrink: 0;
+    }
+    .bar-btn:active { background: #0096b8; }
+
+    /* ─── DRAWER ─────────────────────────────── */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.48);
+      z-index: 300;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+    }
+    .overlay.on { opacity: 1; pointer-events: auto; }
+
+    .drawer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--white);
+      border-radius: 18px 18px 0 0;
+      padding: 16px 20px calc(28px + env(safe-area-inset-bottom, 0px));
+      z-index: 400;
+      transform: translateY(100%);
+      transition: transform .35s cubic-bezier(.32,0,.67,0);
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .drawer.on {
+      transform: translateY(0);
+      transition: transform .35s cubic-bezier(.33,1,.68,1);
+    }
+    .drawer-handle {
+      width: 36px; height: 4px;
+      background: #e0e0e0;
+      border-radius: 2px;
+      margin: 0 auto 18px;
+    }
+    .drawer-title {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 18px;
+    }
+    .drawer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .d-stat {
+      background: var(--pale);
+      border-radius: 10px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+    .d-stat-lbl { font-size: 12px; color: var(--gray); margin-bottom: 4px; }
+    .d-stat-val { font-size: 20px; font-weight: 800; color: var(--red); }
+    .d-stat-val.plain { font-size: 16px; font-weight: 600; color: var(--gray); text-decoration: line-through; }
+    .d-stat-val.blue { color: var(--navy); }
+    .drawer-reset {
+      width: 100%;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray);
+      cursor: pointer;
+      min-height: 44px;
+      font-family: var(--sans);
+      transition: all .2s;
+    }
+    .drawer-reset:active { border-color: var(--blue); color: var(--blue); }
+
+    /* ─── ANIMATIONS ─────────────────────────── */
+    @keyframes pop {
+      0%   { transform: scale(.6); opacity: 0; }
+      70%  { transform: scale(1.15); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="hdr">
+    <div class="hdr-brand">台新餐飲設備 × 大店長晨會</div>
+    <div class="hdr-right">
+      <div class="hdr-tag">設備團購 2025</div>
+      <div class="hdr-badge" id="hdrBadge">已選 <span id="hdrCount">0</span></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">限時優惠</div>
+    <h1>餐飲設備一次選購<br><em>享大店長晨會獨家優惠</em></h1>
+    <p class="hero-sub">精選咖啡機、調理設備、製冰機<br>一站購足所有需求</p>
+    <div class="deadline-pill">🔥 <b>還剩 XX 天</b> — 6月30日截止</div>
+  </section>
+
+  <!-- BUNDLES -->
+  <div class="sec" style="padding-top: 20px;">
+    <div class="sec-label">優惠套組</div>
+    <p class="sec-sub">已配搭最佳組合，點開查看詳情</p>
+    <div id="bundleList"></div>
+  </div>
+
+  <!-- EQUIPMENT -->
+  <div class="sec alt" style="padding-top: 20px;">
+    <div class="sec-label">單台設備</div>
+    <p class="sec-sub">自由選配，即時計算優惠</p>
+    <div class="tabs-wrap">
+      <div class="tabs-row" id="tabBar"></div>
+    </div>
+    <div class="eq-list" id="eqList"></div>
+  </div>
+
+  <!-- FORM -->
+  <section class="form-sec">
+    <div class="form-sec-title">預約<em>現場試機</em></div>
+    <div class="form-card">
+      <form id="contactForm" action="https://formsubmit.co/sales@unitech-e.com.tw" method="POST">
+        <div class="fg">
+          <label>聯絡人姓名 *</label>
+          <input type="text" name="name" required placeholder="王小明">
+        </div>
+        <div class="fg">
+          <label>電話或 LINE ID *</label>
+          <input type="text" name="contact" placeholder="0912345678 或 @lineid" required>
+        </div>
+        <div class="fg">
+          <label>Email *</label>
+          <input type="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="fg">
+          <label>所在地區 *</label>
+          <div class="select-wrap">
+            <select name="region" required>
+              <option value="">-- 請選擇 --</option>
+              <option>台北市</option>
+              <option>新北市</option>
+              <option>桃園市</option>
+              <option>台中市</option>
+              <option>台南市</option>
+              <option>高雄市</option>
+              <option>其他</option>
+            </select>
+          </div>
+        </div>
+        <input type="hidden" name="_subject" value="大店長晨會 - 新的設備團購預約">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="../success.html">
+        <button type="submit" class="form-submit">提交預約 → 24小時內聯繫</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>※ 以上為大店長合作限定報價，均為未稅價格</p>
+    <p>※ 活動優惠至 2025/6/30 止｜設備庫存與規格以現場確認為準</p>
+  </footer>
+
+  <!-- BOTTOM BAR -->
+  <div class="bar">
+    <div class="bar-info">
+      <div class="bar-count" id="barCount">選擇設備，即時計算優惠</div>
+      <div class="bar-saving" id="barSaving"></div>
+    </div>
+    <button class="bar-btn" onclick="openDrawer()">查看明細</button>
+  </div>
+
+  <!-- DRAWER OVERLAY -->
+  <div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+
+  <!-- DRAWER -->
+  <div class="drawer" id="drawer">
+    <div class="drawer-handle"></div>
+    <div class="drawer-title">你的選擇</div>
+    <div class="drawer-grid">
+      <div class="d-stat">
+        <div class="d-stat-lbl">已選項目</div>
+        <div class="d-stat-val" id="dCount">0</div>
+      </div>
+      <div class="d-stat">
+        <div class="d-stat-lbl">總省額</div>
+        <div class="d-stat-val" id="dSaving">$0</div>
+      </div>
+      <div class="d-stat">
+        <div class="d-stat-lbl">原價合計</div>
+        <div class="d-stat-val plain" id="dOriginal">$0</div>
+      </div>
+      <div class="d-stat">
+        <div class="d-stat-lbl">優惠價合計</div>
+        <div class="d-stat-val blue" id="dDiscount">$0</div>
+      </div>
+    </div>
+    <button class="drawer-reset" onclick="resetAll()">清空重選</button>
+  </div>
+
+  <!-- MODAL OVERLAY -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+
+  <!-- PRODUCT DETAIL MODAL -->
+  <div class="modal-sheet" id="modalSheet">
+    <div class="modal-topbar">
+      <div class="modal-handle"></div>
+      <button class="modal-close" onclick="closeModal()">
+        <svg viewBox="0 0 16 16"><line x1="2" y1="2" x2="14" y2="14"/><line x1="14" y1="2" x2="2" y2="14"/></svg>
+      </button>
+    </div>
+    <div class="modal-scroll-area">
+      <div id="modalContent"></div>
+      <div class="modal-footer">
+        <div class="modal-footer-prices">
+          <div class="modal-footer-price-item">
+            <span class="modal-footer-price-lbl">建議售價</span>
+            <span class="modal-footer-msrp-val" id="modal-footer-msrp"></span>
+          </div>
+          <div class="modal-footer-price-item" style="text-align:right">
+            <span class="modal-footer-sale-lbl">團購優惠</span>
+            <span class="modal-footer-sale-val" id="modal-footer-sale"></span>
+          </div>
+        </div>
+        <button class="modal-add-btn add" id="modal-add-btn"></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ─── DATA ─────────────────────────────────── */
+    const bundles = [
+      { id: 'b1', name: '小坪數咖啡店', desc: '日需 100-300 杯｜Dr.Coffee F30 全自動咖啡機 + Samantha II 智慧手沖機 + Aries 磨豆機 + U500 桌下型洗碗機 + Sota 快速微波烤箱 + SC100 製冰機｜咖啡萃取、手沖、現磨、快速復熱與清洗一次到位', msrp: 811300, discounted: 665805 }
+    ];
+
+    const equipments = [
+      {
+        id: 0, brand: 'Schaerer', model: 'Soul 10 雙豆槽全自動咖啡機', type: '全自動咖啡機', badge: '旗艦',
+        desc: '雙豆槽全自動咖啡機，可同時製作兩杯飲品，適合日常 250 杯以上高流量場域。支援多種飲品配方設定，內建自動清洗系統，維護便利。',
+        specs: [
+          ['豆槽', '雙豆槽'],
+          ['同時出杯', '雙杯同步'],
+          ['建議日量', '250 杯以上'],
+          ['清洗系統', '全自動清洗'],
+        ],
+        msrp: 650000, discounted: 585000, image: '../equipment-pictures/schaerer-soul10.jpg', url: null
+      },
+      {
+        id: 1, brand: 'Dr.Coffee', model: 'F30 全自動咖啡機', type: '全自動咖啡機', badge: '主推',
+        desc: '雙鍋爐、21g 金屬沖泡器，支援 16oz 大杯快速萃取，具自動清洗系統。適用日需 300 杯之餐飲場域。',
+        specs: [
+          ['沖泡器', '21g 金屬沖泡器'],
+          ['鍋爐', '雙鍋爐'],
+          ['最大杯量', '16oz 大杯'],
+          ['建議日量', '300 杯以下'],
+          ['清洗系統', '全自動清洗'],
+        ],
+        msrp: 250000, discounted: 225000, image: '../equipment-pictures/dr-coffee-f30.jpg', url: null
+      },
+      {
+        id: 2, brand: 'Hiroia', model: 'Samantha II 智慧型商用手沖咖啡機', type: '商業手沖機', badge: null,
+        desc: '自動進排水、APP 雲端參數同步，支援精準控溫/流速/斷水，可遠端連動管理。適用日需 100 杯之咖啡館、飯店。',
+        specs: [
+          ['進排水', '自動進排水'],
+          ['控溫精度', '0.1°C'],
+          ['建議日量', '100 杯以下'],
+          ['連線', 'APP 雲端同步'],
+        ],
+        msrp: 50000, discounted: 45000, image: '../equipment-pictures/samantha-ii.png', url: null
+      },
+      {
+        id: 3, brand: 'Hiroia', model: 'Hikaru V60 智慧型家用手沖咖啡機', type: '家用手沖機', badge: null,
+        desc: '內建 10 段流速與精準控溫，支援 APP 下載冠軍配方，700ml 水箱無需進排水。適用甜點店、小型辦公室。',
+        specs: [
+          ['流速段數', '10 段'],
+          ['水箱容量', '700ml'],
+          ['進排水', '免進排水'],
+          ['連線', 'APP 配方下載'],
+        ],
+        msrp: 25000, discounted: 19800, image: '../equipment-pictures/hikaru-v60.jpg', url: null
+      },
+      {
+        id: 4, brand: 'Mx. COOL', model: 'Aries 磨豆機', type: '磨豆機', badge: null,
+        desc: '3 秒快拆刀盤、附撥片減少殘粉，搭載 83mm 鈦鍍錐刀，具五段轉速調整與安全停止機制。適用專業咖啡店。',
+        specs: [
+          ['刀盤', '83mm 鈦鍍錐刀'],
+          ['快拆', '3 秒快拆刀盤'],
+          ['轉速', '五段調整'],
+          ['殘粉控制', '附撥片'],
+        ],
+        msrp: 42800, discounted: 38800, image: '../equipment-pictures/aries-grinder.jpg', url: null
+      },
+      {
+        id: 5, brand: 'Meiko', model: 'U500 桌下型洗碗機', type: '商用洗碗機', badge: null,
+        desc: '120 秒短行程 80 度高溫沖洗，搭載節能與軟水系統，可快速清洗各類餐具。適用小型業態。',
+        specs: [
+          ['清洗時間', '120 秒 / 行程'],
+          ['清洗溫度', '80°C'],
+          ['軟水系統', '內建'],
+          ['適用場域', '小型業態'],
+        ],
+        msrp: 92500, discounted: 83250, image: '../equipment-pictures/upster-u500.jpg', url: null
+      },
+      {
+        id: 6, brand: 'Turbochef', model: 'Sota 快速微波烤箱', type: '快速復熱烤箱', badge: '主推',
+        desc: '結合微波與熱風技術，冷凍品可直入烤箱，免裝排煙罩且具圖像化觸控螢幕。適用速食店、咖啡館。',
+        specs: [
+          ['加熱技術', '微波 + 熱風'],
+          ['排煙罩', '免排煙罩'],
+          ['操作介面', '圖像化觸控'],
+          ['適用場域', '速食店、咖啡館'],
+        ],
+        msrp: 330000, discounted: 297000, image: '../equipment-pictures/i1-sota-min.jpg', url: null
+      },
+      {
+        id: 13, brand: 'Lainox', model: 'Foody 五盤蒸烤箱', type: '加熱設備', badge: '主推',
+        desc: '多功能五盤蒸烤箱，蒸氣與對流熱風組合烹調，適用中大型餐廳、飯店廚房與複合式餐飲。',
+        specs: [
+          ['烤盤數', '五盤'],
+          ['加熱模式', '蒸氣 + 對流熱風'],
+          ['適用場域', '餐廳、飯店、複合餐飲'],
+        ],
+        msrp: 265000, discounted: 238500, image: '../equipment-pictures/lainox-foody.jpg', url: null
+      },
+      {
+        id: 7, brand: 'Unitech', model: 'F7 Max 多功能調理機', type: '調理機/冰沙機', badge: null,
+        desc: '支援冷熱食標準化流程，具專利刀片秒速碎冰，杯體/刀片可單獨更換，搭載隔音罩。適用手搖飲。',
+        specs: [
+          ['碎冰', '專利刀片秒速碎冰'],
+          ['隔音', '隔音罩'],
+          ['維修性', '杯體/刀片可單獨換'],
+          ['適用場域', '手搖飲'],
+        ],
+        msrp: 32000, discounted: 28800, image: '../equipment-pictures/f7-max.png', url: null
+      },
+      {
+        id: 8, brand: 'Sammic', model: 'CK-241 二合一食物處理機', type: '廚房備料', badge: null,
+        desc: '結合切菜與攪拌，超過 35 種刀盤配件組合，能設定食材處理的轉速與停頓點，每小時可處理 50–350 kg。',
+        specs: [
+          ['功能', '切菜 + 攪拌'],
+          ['刀盤配件', '35 種以上'],
+          ['處理量', '50–350 kg/hr'],
+        ],
+        msrp: 64000, discounted: 57600, image: '../equipment-pictures/ck-241.jpg', url: null
+      },
+      {
+        id: 9, brand: '', model: 'SC100 製冰機', type: '製冰機', badge: null,
+        desc: '商用製冰機，高效率製冰，符合商業廚房需求，快速製冰支援高峰時段。',
+        specs: [],
+        msrp: 46000, discounted: 41400, image: '../equipment-pictures/sc-100.jpg', url: null
+      },
+      {
+        id: 10, brand: 'Spaceman', model: '6228B-C 霜淇淋機', type: '霜淇淋機', badge: '主推',
+        desc: '重力型霜淇淋機，穩定出品，專業級霜淇淋製作，適用冰品飲料店與複合式餐飲。',
+        specs: [
+          ['類型', '重力型'],
+          ['適用場域', '冰品飲料店、複合餐飲'],
+        ],
+        msrp: 295000, discounted: 265500, image: '../equipment-pictures/spaceman-6228b-c.png', url: null
+      },
+      {
+        id: 11, brand: 'Sammic', model: 'SmartVide 5 低溫烹調機', type: '廚房備料', badge: null,
+        desc: '精準控溫低溫烹調，支援 220V，專業級低溫烹調設備，適用中央廚房與專業廚房。',
+        specs: [
+          ['烹調方式', '低溫真空烹調'],
+          ['電源', '220V'],
+          ['適用場域', '中央廚房、專業廚房'],
+        ],
+        msrp: 47000, discounted: 42300, image: '../equipment-pictures/sammic-smart-vide.jpg', url: null
+      },
+      {
+        id: 12, brand: 'Sammic', model: 'SU-310 真空包裝機', type: '廚房備料', badge: null,
+        desc: '專業真空包裝機，保鮮效果優異，適用食材保存、預製餐點包裝與冷鏈配送。',
+        specs: [
+          ['功能', '真空包裝'],
+          ['適用場域', '食材保存、預製餐點'],
+        ],
+        msrp: 147000, discounted: 132300, image: '../equipment-pictures/sammic-su310.webp', url: null
+      },
+    ];
+
+    /* ─── STATE ─────────────────────────────────── */
+    const selectedEqIds = new Set();
+    let activeFilter = '全部';
+
+    /* ─── RENDER BUNDLES ────────────────────────── */
+    function renderBundles() {
+      document.getElementById('bundleList').innerHTML = bundles.map((b, i) => `
+        <div class="acc${i === 0 ? ' open' : ''}" id="acc-${b.id}">
+          <div class="acc-hdr" onclick="toggleAcc('${b.id}')">
+            <div class="acc-title">${b.name}</div>
+            <div class="acc-meta">$${b.discounted.toLocaleString()}</div>
+            <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <polyline points="5 8 10 13 15 8"/>
+            </svg>
+          </div>
+          <div class="acc-body">
+            <div class="acc-inner">
+              <p class="acc-desc">${b.desc}</p>
+              <div class="acc-prices" style="grid-template-columns:repeat(2,1fr);">
+                <div class="acc-price-item">
+                  <div class="acc-price-lbl">建議售價</div>
+                  <div class="acc-price-val strike">$${b.msrp.toLocaleString()}</div>
+                </div>
+                <div class="acc-price-item">
+                  <div class="acc-price-lbl">團購優惠</div>
+                  <div class="acc-price-val red">$${b.discounted.toLocaleString()}</div>
+                </div>
+              </div>
+              <label class="chk-btn" for="bundle-${b.id}">
+                <input type="checkbox" id="bundle-${b.id}" onchange="updateSummary()">
+                <span>我要選這組</span>
+              </label>
+            </div>
+          </div>
+        </div>`).join('');
+    }
+
+    /* ─── RENDER TABS ───────────────────────────── */
+    function renderTabs() {
+      const typeCounts = {};
+      const typeSelCounts = {};
+      equipments.forEach(eq => {
+        typeCounts[eq.type] = (typeCounts[eq.type] || 0) + 1;
+        if (selectedEqIds.has(eq.id)) typeSelCounts[eq.type] = (typeSelCounts[eq.type] || 0) + 1;
+      });
+      const types = ['全部', ...Object.keys(typeCounts)];
+
+      document.getElementById('tabBar').innerHTML = types.map(t => {
+        const isAll = t === '全部';
+        const cnt = isAll ? equipments.length : typeCounts[t];
+        const sel = isAll ? selectedEqIds.size : (typeSelCounts[t] || 0);
+        const active = t === activeFilter ? ' active' : '';
+        const badge = sel > 0 ? `<span class="t-sel">${sel}</span>` : '';
+        return `<button class="tab-btn${active}" onclick="setFilter('${t}')">${t}<span class="t-count">${cnt}</span>${badge}</button>`;
+      }).join('');
+    }
+
+    /* ─── RENDER EQUIPMENT ──────────────────────── */
+    const BADGE_ORDER = { '旗艦': 0, '主推': 1 };
+
+    function sortedEquipments(list) {
+      return [...list].sort((a, b) => {
+        const ao = BADGE_ORDER[a.badge] ?? 2;
+        const bo = BADGE_ORDER[b.badge] ?? 2;
+        return ao - bo;
+      });
+    }
+
+    function renderEquipmentList() {
+      const base = activeFilter === '全部' ? equipments : equipments.filter(eq => eq.type === activeFilter);
+      const filtered = sortedEquipments(base);
+      const checkSvg = (on) => `<svg viewBox="0 0 14 14" fill="none" stroke="${on ? '#fff' : '#9CA3AF'}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 7 5.5 10.5 12 3.5"/></svg>`;
+
+      document.getElementById('eqList').innerHTML = filtered.map(eq => {
+        const on = selectedEqIds.has(eq.id);
+        const imgHtml = eq.image
+          ? `<img src="${eq.image}" alt="${eq.model}" loading="lazy">`
+          : `<div class="eq-thumb-ph">📦</div>`;
+
+        const badgeHtml = eq.badge === '旗艦'
+          ? `<div class="eq-badge flagship">⭐ 旗艦機種</div>`
+          : eq.badge === '主推'
+          ? `<div class="eq-badge featured">🔥 活動主推</div>`
+          : '';
+
+        return `
+          <div class="eq-card${on ? ' sel' : ''}" id="eq-card-${eq.id}" onclick="toggleEq(${eq.id})">
+            <div class="eq-thumb">${imgHtml}${badgeHtml}</div>
+            <div class="eq-body">
+              ${eq.brand ? `<div class="eq-brand">${eq.brand}</div>` : ''}
+              <div class="eq-model">${eq.model}</div>
+              <div class="eq-price-labeled">
+                <div class="eq-price-msrp">建議售價：$${eq.msrp.toLocaleString()}</div>
+                <div class="eq-price-sale">團購優惠價：<span>$${eq.discounted.toLocaleString()}</span></div>
+              </div>
+              <div class="eq-foot">
+                <button class="eq-detail-btn" onclick="event.stopPropagation();openModal(${eq.id})">查看詳情 ›</button>
+                <div class="eq-tog${on ? ' on' : ''}" id="eq-tog-${eq.id}" onclick="event.stopPropagation();toggleEq(${eq.id})">${checkSvg(on)}</div>
+              </div>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    /* ─── TOGGLE EQUIPMENT ──────────────────────── */
+    function toggleEq(id) {
+      if (selectedEqIds.has(id)) selectedEqIds.delete(id);
+      else selectedEqIds.add(id);
+
+      const on = selectedEqIds.has(id);
+      const card = document.getElementById(`eq-card-${id}`);
+      const tog = document.getElementById(`eq-tog-${id}`);
+
+      if (card) card.classList.toggle('sel', on);
+      if (tog) {
+        tog.classList.toggle('on', on);
+        const stroke = on ? '#fff' : '#9CA3AF';
+        tog.innerHTML = `<svg viewBox="0 0 14 14" fill="none" stroke="${stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 7 5.5 10.5 12 3.5"/></svg>`;
+      }
+
+      renderTabs();
+      updateSummary();
+    }
+
+    /* ─── FILTER ────────────────────────────────── */
+    function setFilter(type) {
+      activeFilter = type;
+      renderTabs();
+      renderEquipmentList();
+    }
+
+    /* ─── UPDATE SUMMARY ────────────────────────── */
+    function updateSummary() {
+      let original = 0, discount = 0, count = 0;
+
+      bundles.forEach(b => {
+        if (document.getElementById(`bundle-${b.id}`)?.checked) {
+          original += b.msrp; discount += b.discounted; count++;
+        }
+      });
+      equipments.forEach(eq => {
+        if (selectedEqIds.has(eq.id)) {
+          original += eq.msrp; discount += eq.discounted; count++;
+        }
+      });
+
+      const saving = original - discount;
+
+      if (count === 0) {
+        document.getElementById('barCount').textContent = '選擇設備，即時計算優惠';
+        document.getElementById('barSaving').textContent = '';
+      } else {
+        document.getElementById('barCount').textContent = `已選 ${count} 台`;
+        document.getElementById('barSaving').textContent = `省 $${saving.toLocaleString()}`;
+      }
+
+      const badge = document.getElementById('hdrBadge');
+      document.getElementById('hdrCount').textContent = count;
+      badge.classList.toggle('on', count > 0);
+
+      document.getElementById('dCount').textContent = count;
+      document.getElementById('dSaving').textContent = '$' + saving.toLocaleString();
+      document.getElementById('dOriginal').textContent = '$' + original.toLocaleString();
+      document.getElementById('dDiscount').textContent = '$' + discount.toLocaleString();
+    }
+
+    /* ─── MODAL ─────────────────────────────────── */
+    function openModal(id) {
+      const eq = equipments.find(e => e.id === id);
+      if (!eq) return;
+
+      const on = selectedEqIds.has(id);
+
+      const badgeHtml = eq.badge === '旗艦'
+        ? `<div class="modal-badge flagship">⭐ 旗艦機種</div>`
+        : eq.badge === '主推'
+        ? `<div class="modal-badge featured">🔥 活動主推</div>`
+        : '';
+
+      const imgHtml = eq.image
+        ? `<img class="modal-img" src="${eq.image}" alt="${eq.model}">`
+        : `<div class="modal-img-ph">📦</div>`;
+
+      const specRows = (eq.specs && eq.specs.length > 0)
+        ? `<div class="modal-section-title">規格</div>
+           <table class="modal-spec-table">
+             ${eq.specs.map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('')}
+           </table>`
+        : '';
+
+      const linkHtml = eq.url
+        ? `<a class="modal-link" href="${eq.url}" target="_blank" rel="noopener">
+             前往官方網站
+             <svg viewBox="0 0 16 16"><line x1="3" y1="3" x2="13" y2="3"/><line x1="13" y1="3" x2="13" y2="13"/><line x1="3" y1="13" x2="13" y2="3"/></svg>
+           </a>`
+        : '';
+
+      document.getElementById('modalContent').innerHTML = `
+        ${imgHtml}
+        <div class="modal-body">
+          ${badgeHtml}
+          ${eq.brand ? `<div class="modal-brand">${eq.brand}</div>` : ''}
+          <div class="modal-model">${eq.model}</div>
+          <div class="modal-type">${eq.type}</div>
+          <div class="modal-section-title">產品說明</div>
+          <div class="modal-desc">${eq.desc}</div>
+          ${specRows}
+          ${linkHtml}
+        </div>`;
+
+      document.getElementById('modal-footer-msrp').textContent = '$' + eq.msrp.toLocaleString();
+      document.getElementById('modal-footer-sale').textContent = '$' + eq.discounted.toLocaleString();
+
+      const addBtn = document.getElementById('modal-add-btn');
+      addBtn.className = `modal-add-btn ${on ? 'remove' : 'add'}`;
+      addBtn.textContent = on ? '✓ 已加入詢問清單' : '＋ 加入詢問清單';
+      addBtn.onclick = () => toggleFromModal(id);
+
+      document.getElementById('modalOverlay').classList.add('on');
+      document.getElementById('modalSheet').classList.add('on');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('on');
+      document.getElementById('modalSheet').classList.remove('on');
+      document.body.style.overflow = '';
+    }
+
+    function toggleFromModal(id) {
+      toggleEq(id);
+      const on = selectedEqIds.has(id);
+      const btn = document.getElementById('modal-add-btn');
+      if (btn) {
+        btn.className = `modal-add-btn ${on ? 'remove' : 'add'}`;
+        btn.textContent = on ? '✓ 已加入詢問清單' : '＋ 加入詢問清單';
+      }
+    }
+
+    /* ─── ACCORDION ─────────────────────────────── */
+    function toggleAcc(id) {
+      const target = document.getElementById(`acc-${id}`);
+      const wasOpen = target.classList.contains('open');
+      document.querySelectorAll('.acc').forEach(a => a.classList.remove('open'));
+      if (!wasOpen) target.classList.add('open');
+    }
+
+    /* ─── DRAWER ────────────────────────────────── */
+    function openDrawer() {
+      document.getElementById('drawer').classList.add('on');
+      document.getElementById('overlay').classList.add('on');
+    }
+    function closeDrawer() {
+      document.getElementById('drawer').classList.remove('on');
+      document.getElementById('overlay').classList.remove('on');
+    }
+
+    /* ─── RESET ─────────────────────────────────── */
+    function resetAll() {
+      selectedEqIds.clear();
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+      renderTabs();
+      renderEquipmentList();
+      updateSummary();
+      closeDrawer();
+    }
+
+    /* ─── INIT ──────────────────────────────────── */
+    renderBundles();
+    renderTabs();
+    renderEquipmentList();
+    updateSummary();
+  </script>
+</body>
+</html>

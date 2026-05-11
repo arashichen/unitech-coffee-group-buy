@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>大店長晨會 × 台新餐飲設備｜設備團購獨家優惠</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:   #00B5E2;
+      --navy:   #004C97;
+      --bg:     #F5F9FC;
+      --pale:   #E0F4FB;
+      --text:   #1A1A1A;
+      --gray:   #6B7280;
+      --border: #D1E8F2;
+      --white:  #FFFFFF;
+      --red:    #E63535;
+    }
+
+    body {
+      font-family: 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 15px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--navy);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .header-brand { color: var(--white); font-weight: 700; font-size: 14px; letter-spacing: .04em; }
+    .header-tag   { color: var(--blue);  font-size: 13px; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: 60px 28px 52px;
+      text-align: center;
+      border-bottom: 3px solid var(--blue);
+    }
+    .ep-tag {
+      display: inline-block;
+      border: 1px solid rgba(0,181,226,.5);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      padding: 4px 14px;
+      border-radius: 2px;
+      margin-bottom: 22px;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: clamp(24px, 5.5vw, 40px);
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+    .hero h1 em { color: var(--blue); font-style: normal; }
+    .hero-desc {
+      color: #9DCDE8;
+      font-size: 14px;
+      margin-bottom: 32px;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .deadline-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0,181,226,.12);
+      border: 1px solid rgba(0,181,226,.35);
+      border-radius: 100px;
+      padding: 9px 22px;
+      font-size: 14px;
+      color: var(--white);
+    }
+    .deadline-pill b { color: var(--blue); }
+
+    /* ── SECTION COMMON ── */
+    .section {
+      padding: 52px 28px;
+    }
+    .inner { max-width: 900px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: clamp(19px, 3.5vw, 26px);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+    .h2-sub {
+      font-size: 14px;
+      color: var(--gray);
+      margin-bottom: 28px;
+    }
+
+    /* ── PRODUCTS ── */
+    .products-section { background: var(--white); }
+    
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    #bundleGrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 1024px) {
+      .product-grid, #bundleGrid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .product-grid, #bundleGrid {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .product-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: border-color .18s, box-shadow .18s, transform .15s;
+    }
+
+    .product-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 4px 12px rgba(0,181,226,.15);
+      transform: translateY(-4px);
+    }
+
+    .pc-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .pc-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pc-content {
+      padding: 16px;
+    }
+
+    .pc-type {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+
+    .pc-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .pc-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .pc-prices {
+      margin-bottom: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .price-label { color: var(--gray); }
+    .price-msrp { color: #ccc; text-decoration: line-through; }
+    .price-discount { color: var(--navy); font-weight: 700; }
+
+    .pc-saving {
+      background: #fff9e6;
+      border: 1px solid #ffe680;
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--red);
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .pc-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px;
+      background: var(--bg);
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .pc-checkbox input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .pc-checkbox label {
+      flex: 1;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    /* ── SUMMARY ── */
+    .summary-section {
+      background: var(--pale);
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+
+    .summary-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .summary-header h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .reset-btn {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .reset-btn:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+    }
+
+    .summary-item {
+      text-align: center;
+    }
+
+    .summary-label {
+      font-size: 12px;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+
+    .summary-value {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--red);
+    }
+
+    /* ── FORM ── */
+    .form-section {
+      background: var(--navy);
+      color: var(--white);
+      padding: 52px 28px;
+      text-align: center;
+    }
+
+    .form-section h2 {
+      color: var(--white);
+      margin-bottom: 32px;
+    }
+
+    .form-container {
+      background: var(--white);
+      color: var(--text);
+      padding: 32px;
+      border-radius: 6px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 14px;
+      transition: border-color .2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0,181,226,.1);
+    }
+
+    .form-submit {
+      width: 100%;
+      background: var(--blue);
+      color: var(--white);
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .form-submit:hover {
+      background: #0096b8;
+    }
+
+    /* ── TABS ── */
+    .tab-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .tab-btn {
+      padding: 6px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      background: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray);
+      cursor: pointer;
+      transition: border-color .18s, color .18s, background .18s;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    .tab-btn.active {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--white);
+    }
+
+    .tab-count {
+      display: inline-block;
+      background: rgba(255,255,255,.22);
+      border-radius: 100px;
+      padding: 0 7px;
+      font-size: 11px;
+      margin-left: 4px;
+      font-weight: 700;
+    }
+
+    .tab-btn:not(.active) .tab-count {
+      background: var(--pale);
+      color: var(--navy);
+    }
+
+    .tab-selected-badge {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      border-radius: 100px;
+      padding: 0 7px;
+      font-size: 11px;
+      margin-left: 4px;
+      font-weight: 700;
+      animation: badgePop .2s ease;
+    }
+
+    @keyframes badgePop {
+      0%   { transform: scale(.6); opacity: 0; }
+      70%  { transform: scale(1.15); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--navy);
+      color: var(--white);
+      padding: 28px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="header-brand">台新餐飲設備 × 大店長晨會</div>
+    <div class="header-tag">設備團購 2025</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="ep-tag">限時優惠</div>
+    <h1>餐飲設備一次選購<br><em>享大店長晨會獨家優惠</em></h1>
+    <p class="hero-desc">精選咖啡機、調理設備、製冰機｜一站購足所有需求</p>
+    <div class="deadline-pill">
+      🔥 <b>還剩 XX 天</b> — 6月30日截止
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products-section section">
+    <div class="inner">
+      <!-- 旗艦機種 -->
+      <div style="margin-bottom: 48px; padding: 28px; background: var(--pale); border-radius: 8px; border: 1.5px solid var(--blue);">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px;">旗艦機種</div>
+        <h3 style="font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">Schaerer Soul 10 雙豆槽全自動咖啡機</h3>
+        <p style="color: var(--gray); margin-bottom: 16px;">日常 250 杯以上｜中高端雙豆槽機種｜可應用二種咖啡豆｜雙杯同時製作</p>
+        <p style="color: var(--gray); font-size: 14px;">建議售價 <strong style="color: var(--navy);">$650,000 起</strong>｜依規格配置｜請洽電詢</p>
+      </div>
+
+      <!-- 活動主推 -->
+      <div style="margin-bottom: 48px; padding-bottom: 28px; border-bottom: 2px solid var(--blue);">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; display: inline-block; background: #ffe6e6; padding: 4px 12px; border-radius: 2px;">★ 活動主推</div>
+        <div id="featuredProductGrid" class="product-grid"></div>
+      </div>
+
+      <!-- 優惠套組 -->
+      <div style="margin-bottom: 48px; padding-bottom: 28px; border-bottom: 2px solid var(--border);">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px;">優惠套組</div>
+        <p class="h2-sub" style="margin-bottom: 24px;">已配搭最佳組合</p>
+        <div id="bundleGrid"></div>
+      </div>
+
+      <!-- 其他設備 -->
+      <div>
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px;">單台設備</div>
+        <p class="h2-sub" style="margin-bottom: 24px;">自由選配｜實時計算總省額</p>
+        <div id="tabBar" class="tab-bar"></div>
+        <div id="productGrid" class="product-grid"></div>
+      </div>
+
+      <!-- SUMMARY -->
+      <div class="summary-section">
+        <div class="summary-header">
+          <h3>你的選擇</h3>
+          <button class="reset-btn" onclick="resetSelection()">清空重選</button>
+        </div>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <div class="summary-label">已選項目</div>
+            <div class="summary-value" id="selectedCount">0</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">原價合計</div>
+            <div class="summary-value" id="originalTotal">$0</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">優惠價合計</div>
+            <div class="summary-value" id="discountTotal">$0</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">總省額</div>
+            <div class="summary-value" id="totalSavings">$0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section class="form-section">
+    <div class="inner">
+      <h2>預約現場試機</h2>
+      <div class="form-container">
+        <form id="contactForm" action="https://formsubmit.co/sales@unitech-e.com.tw" method="POST">
+          <div class="form-group">
+            <label for="name">聯絡人姓名 *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contact">電話或 LINE ID *</label>
+            <input type="text" id="contact" name="contact" placeholder="0912345678 或 @lineid" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="region">所在地區 *</label>
+            <select id="region" name="region" required>
+              <option value="">-- 請選擇 --</option>
+              <option value="台北市">台北市</option>
+              <option value="新北市">新北市</option>
+              <option value="桃園市">桃園市</option>
+              <option value="台中市">台中市</option>
+              <option value="台南市">台南市</option>
+              <option value="高雄市">高雄市</option>
+              <option value="其他">其他</option>
+            </select>
+          </div>
+
+          <input type="hidden" name="_subject" value="大店長晨會 - 新的設備團購預約">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://yourusername.github.io/unitech-coffee-group-buy/success.html">
+
+          <button type="submit" class="form-submit">提交預約 → 24小時內聯繫</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>※ 以上為大店長合作限定報價，均為未稅價格</p>
+    <p>※ 活動優惠至 2025/6/30 止｜設備庫存與規格以現場確認為準</p>
+  </footer>
+
+  <script>
+    const featuredProduct = { id: 1, name: 'Dr.Coffee F30', type: '全自動咖啡機', desc: '雙鍋爐、21g金屬沖泡器，支援16oz大杯快速萃取', msrp: 250000, discounted: 202000, image: 'equipment-pictures/dr-coffee-f30.jpg', featured: true };
+
+    const bundles = [
+      { id: 'b1', name: '小坪數咖啡店', type: '套組', desc: '日需 100-300 杯｜Dr.Coffee F30 雙鍋爐全自動咖啡機 + Samantha II 智慧手沖機 + Aries 磨豆機｜咖啡萃取、手沖、現磨一次到位', items: [1, 2, 4], msrp: 342800, discounted: 272000 },
+      { id: 'b2', name: '中型複合式廳店', type: '套組', desc: '全品項服務｜Hikaru V60 精準控溫手沖機 + Sota 快速微波烤箱 + F7 Max 多功能調理機｜飲品、複合餐點快速出品', items: [3, 6, 7], msrp: 387000, discounted: 334000 },
+      { id: 'b3', name: '大型中央廚房', type: '套組', desc: '日需 300+ 杯｜完整解決方案｜CK-241 食物處理機 + SC-100 制冰機 + Spaceman 霜淇淋機 + SmartVide 低溫烹調機 + SU-310 真空包裝機 + 標籤機｜中央廚房食材處理、預製 ready-to-cook 流程', items: [8, 9, 10, 11, 12, 13], msrp: 633000, discounted: 575000 }
+    ];
+
+    const equipments = [
+      { id: 1,  name: 'Dr.Coffee F30',        type: '全自動咖啡機',  desc: '雙鍋爐、21g 金屬沖泡器，支援 16oz 大杯快速萃取，具自動清洗系統。適用日需 300 杯之餐飲場域', msrp: 250000, discounted: 202000, image: 'equipment-pictures/dr-coffee-f30.jpg' },
+      { id: 2,  name: 'Hiroia Samantha II',   type: '商業手沖機',    desc: '自動進排水、APP雲端參數同步，支援精準控溫/流速/斷水，可遠端連動管理。適用日需 100 杯之咖啡館、飯店', msrp: 50000, discounted: 38000, image: 'equipment-pictures/samantha-ii.png' },
+      { id: 3,  name: 'Hiroia Hikaru V60',    type: '家用手沖機',    desc: '內建 10 段流速與精準控溫，支援 APP 下載冠軍配方，700ml 水箱無需進排水。適用甜點店、小型辦公室、私人接待室', msrp: 25000, discounted: 21000, image: 'equipment-pictures/hikaru-v60.jpg' },
+      { id: 4,  name: 'Mx. COOL Aries',       type: '磨豆機',        desc: '3秒快拆刀盤、附撥片減少殘粉，搭載 83mm 鈦鍍錐刀，具五段轉速調整與安全停止機制。適用專業咖啡店、手沖/義式複合店', msrp: 42800, discounted: 32000, image: 'equipment-pictures/aries-grinder.jpg' },
+      { id: 5,  name: 'Meiko U500',           type: '商用洗碗機',    desc: '120 秒短行程 80 度高溫沖洗，搭載節能與軟水系統，可快速清洗各類餐具。適用小型業態、家庭使用', msrp: 92500, discounted: 85000, image: 'equipment-pictures/upster-u500.jpg' },
+      { id: 6,  name: 'Turbochef Sota',       type: '快速復熱烤箱',  desc: '結合微波與熱風技術，冷凍品可直入烤箱，免裝排煙罩且具圖像化觸控螢幕。適用速食店、咖啡館、酒吧、百貨', msrp: 330000, discounted: 292000, image: 'equipment-pictures/i1-sota-min.jpg' },
+      { id: 7,  name: 'Unitech F7 Max',       type: '調理機/冰沙機', desc: '支援冷熱食標準化流程，具專利刀片秒速碎冰，杯體/刀片可單獨更換，搭載隔音罩。適用手搖飲、早午餐店、咖啡館', msrp: 32000, discounted: 21000, image: 'equipment-pictures/f7-max.png' },
+      { id: 8,  name: 'Sammic CK-241',        type: '廚房備料',      desc: '結合切菜與攪拌，超過 35 種的刀盤配件組合，能設定食材處理的轉速與停頓點，最多可編輯 9 種應用程式。每小時可處理 50-350 公斤食材', msrp: 64000, discounted: 53000, image: 'equipment-pictures/ck-241.jpg' },
+      { id: 9,  name: 'SC100',                type: '製冰機',        desc: '商用製冰機，高效率製冰，符合商業廚房需求，快速製冰支援高峰時段', msrp: 46000, discounted: 42000, image: 'equipment-pictures/sc-100.jpg' },
+      { id: 10, name: 'Spaceman 霜淇淋機',    type: '霜淇淋機',      desc: '重力型霜淇淋機，穩定出品，專業級霜淇淋製作，適用冰品飲料店與複合式餐飲', msrp: 295000, discounted: 271000, image: 'equipment-pictures/spaceman-6228b-c.png' },
+      { id: 11, name: 'Sammic SmartVide 5',   type: '食物調理機',    desc: '精準控溫低溫烹調，支援 220V，專業級低溫烹調設備，適用中央廚房與專業廚房', msrp: 47000, discounted: 43000, image: 'equipment-pictures/sammic-smart-vide.jpg' },
+      { id: 12, name: 'Sammic SU-310',        type: '廚房備料',      desc: '專業真空包裝機，保鮮效果優異，適用食材保存、預製餐點包裝與冷鏈配送', msrp: 147000, discounted: 135000, image: 'equipment-pictures/sammic-su310.webp' },
+      { id: 13, name: '標籤機',               type: '廚房備料',      desc: '商用標籤列印機，適用食品包裝、保存期限標示與庫存管理，提升餐飲業食品安全管理', msrp: 34000, discounted: 31000, image: 'equipment-pictures/sammic-label-printer.webp' }
+    ];
+
+    function renderProductCard(eq, idPrefix = 'eq', checked = false) {
+      const saving = eq.msrp - eq.discounted;
+      const imageHtml = eq.image ? `<img src="${eq.image}" alt="${eq.name}" />` : `<div style="display:flex;align-items:center;justify-content:center;color:#ccc;font-size:40px;">📦</div>`;
+      const onchange = idPrefix === 'eq' ? `toggleEq(${eq.id})` : 'updateSummary()';
+
+      return `
+        <div class="product-card">
+          <div class="pc-image">${imageHtml}</div>
+          <div class="pc-content">
+            <div class="pc-type">${eq.type}</div>
+            <div class="pc-name">${eq.name}</div>
+            <p class="pc-desc">${eq.desc}</p>
+
+            <div class="pc-prices">
+              <div class="price-row">
+                <span class="price-label">建議售價</span>
+                <span class="price-msrp">$${eq.msrp.toLocaleString()}</span>
+              </div>
+              <div class="price-row">
+                <span class="price-label">優惠價</span>
+                <span class="price-discount">$${eq.discounted.toLocaleString()}</span>
+              </div>
+            </div>
+
+            <div class="pc-saving">省 $${saving.toLocaleString()}</div>
+
+            <div class="pc-checkbox">
+              <input type="checkbox" id="${idPrefix}-${eq.id}" data-type="${idPrefix}" ${checked ? 'checked' : ''} onchange="${onchange}">
+              <label for="${idPrefix}-${eq.id}">我要選${eq.type === '套組' ? '這組' : '這台'}</label>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    let activeFilter = '全部';
+    const selectedEqIds = new Set();
+
+    function renderTabs() {
+      const otherEquipments = equipments.filter(eq => eq.id !== 1);
+      const typeCounts = {};
+      const typeSelectedCounts = {};
+      otherEquipments.forEach(eq => {
+        typeCounts[eq.type] = (typeCounts[eq.type] || 0) + 1;
+        if (selectedEqIds.has(eq.id)) {
+          typeSelectedCounts[eq.type] = (typeSelectedCounts[eq.type] || 0) + 1;
+        }
+      });
+      const types = ['全部', ...Object.keys(typeCounts)];
+
+      const bar = document.getElementById('tabBar');
+      bar.innerHTML = types.map(t => {
+        const isAll = t === '全部';
+        const count = isAll ? otherEquipments.length : typeCounts[t];
+        const selected = isAll ? selectedEqIds.size : (typeSelectedCounts[t] || 0);
+        const active = t === activeFilter ? 'active' : '';
+        const badge = selected > 0
+          ? `<span class="tab-selected-badge">已選 ${selected}</span>`
+          : '';
+        return `<button class="tab-btn ${active}" onclick="setFilter('${t}')">${t}<span class="tab-count">${count}</span>${badge}</button>`;
+      }).join('');
+    }
+
+    function setFilter(type) {
+      activeFilter = type;
+      renderTabs();
+      renderEquipmentGrid();
+    }
+
+    function renderEquipmentGrid() {
+      const otherEquipments = equipments.filter(eq => eq.id !== 1);
+      const filtered = activeFilter === '全部'
+        ? otherEquipments
+        : otherEquipments.filter(eq => eq.type === activeFilter);
+      document.getElementById('productGrid').innerHTML =
+        filtered.map(eq => renderProductCard(eq, 'eq', selectedEqIds.has(eq.id))).join('');
+    }
+
+    function toggleEq(id) {
+      if (selectedEqIds.has(id)) {
+        selectedEqIds.delete(id);
+      } else {
+        selectedEqIds.add(id);
+      }
+      renderTabs();
+      updateSummary();
+    }
+
+    function renderProducts() {
+      // 活動主推
+      document.getElementById('featuredProductGrid').innerHTML = renderProductCard(featuredProduct, 'featured');
+
+      // 優惠套組
+      document.getElementById('bundleGrid').innerHTML = bundles.map(b => renderProductCard(b, 'bundle')).join('');
+
+      // 單台設備 tabs + grid
+      renderTabs();
+      renderEquipmentGrid();
+    }
+
+    function updateSummary() {
+      let original = 0, discount = 0, count = 0;
+
+      // 檢查主推產品
+      if (document.getElementById(`featured-${featuredProduct.id}`)?.checked) {
+        original += featuredProduct.msrp;
+        discount += featuredProduct.discounted;
+        count++;
+      }
+
+      // 檢查套組
+      bundles.forEach(bundle => {
+        if (document.getElementById(`bundle-${bundle.id}`)?.checked) {
+          original += bundle.msrp;
+          discount += bundle.discounted;
+          count++;
+        }
+      });
+
+      // 檢查單台設備
+      const otherEquipments = equipments.filter(eq => eq.id !== 1);
+      otherEquipments.forEach(eq => {
+        if (selectedEqIds.has(eq.id)) {
+          original += eq.msrp;
+          discount += eq.discounted;
+          count++;
+        }
+      });
+
+      document.getElementById('selectedCount').textContent = count;
+      document.getElementById('originalTotal').textContent = '$' + original.toLocaleString();
+      document.getElementById('discountTotal').textContent = '$' + discount.toLocaleString();
+      document.getElementById('totalSavings').textContent = '$' + (original - discount).toLocaleString();
+    }
+
+    function resetSelection() {
+      selectedEqIds.clear();
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+      renderTabs();
+      updateSummary();
+      // 重新滾動到產品部分
+      document.getElementById('featuredProductGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // FormSubmit 自動處理，表單會直接提交並重導到成功頁面
+
+    renderProducts();
+  </script>
+</body>
+</html>
