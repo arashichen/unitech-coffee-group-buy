@@ -238,7 +238,7 @@
       overflow: hidden;
       transition: max-height .32s cubic-bezier(.4,0,.2,1);
     }
-    .acc.open .acc-body { max-height: 480px; }
+    .acc.open .acc-body { max-height: 900px; }
     .acc-inner { padding: 16px; }
     .acc-desc {
       font-size: 13px;
@@ -260,6 +260,58 @@
     .acc-price-val { font-size: 15px; font-weight: 800; color: var(--navy); }
     .acc-price-val.strike { font-size: 12px; font-weight: 400; color: #bbb; text-decoration: line-through; }
     .acc-price-val.red { color: var(--red); }
+    .bundle-img {
+      width: 100%;
+      height: 160px;
+      background: #dce8f0;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8aabbb;
+      font-size: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .bundle-img img { width: 100%; height: 100%; object-fit: cover; }
+    .bundle-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .bundle-tag {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: var(--pale);
+      color: var(--blue);
+      font-weight: 600;
+    }
+    .bundle-items {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    .bundle-items li {
+      font-size: 13px;
+      color: var(--navy);
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bundle-items li:last-child { border-bottom: none; }
+    .bundle-items li::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0;
+    }
 
     /* ─── SCROLLABLE TABS ────────────────────── */
     .tabs-wrap {
@@ -903,7 +955,7 @@
   <header class="hdr">
     <div class="hdr-brand">台新餐飲設備 × 大店長晨會</div>
     <div class="hdr-right">
-      <div class="hdr-tag">設備團購 2025</div>
+      <div class="hdr-tag">設備團購 2026</div>
       <div class="hdr-badge" id="hdrBadge">已選 <span id="hdrCount">0</span></div>
     </div>
   </header>
@@ -913,7 +965,7 @@
     <div class="hero-tag">限時優惠</div>
     <h1>餐飲設備一次選購<br><em>享大店長晨會獨家優惠</em></h1>
     <p class="hero-sub">精選咖啡機、調理設備、製冰機<br>一站購足所有需求</p>
-    <div class="deadline-pill">🔥 <b>還剩 XX 天</b> — 6月30日截止</div>
+    <div class="deadline-pill">🔥 還剩 <b><span id="cd-days">--</span> 天 <span id="cd-hours">--</span> 時 <span id="cd-mins">--</span> 分</b> — 7月31日截止</div>
   </section>
 
   <!-- BUNDLES -->
@@ -935,7 +987,7 @@
 
   <!-- FORM -->
   <section class="form-sec">
-    <div class="form-sec-title">預約<em>現場試機</em></div>
+    <div class="form-sec-title">預約<em>諮詢試機</em></div>
     <div class="form-card">
       <form id="contactForm" action="https://formsubmit.co/sales@unitech-e.com.tw" method="POST">
         <div class="fg">
@@ -947,8 +999,15 @@
           <input type="text" name="contact" placeholder="0912345678 或 @lineid" required>
         </div>
         <div class="fg">
-          <label>Email *</label>
-          <input type="email" name="email" placeholder="your@email.com" required>
+          <label>收聽哪集 Podcast 來的？*</label>
+          <div class="select-wrap">
+            <select name="podcast_episode" required>
+              <option value="">-- 請選擇 --</option>
+              <option value="第一集｜cafe bakery">第一集｜cafe bakery</option>
+              <option value="第二集｜霜淇淋">第二集｜霜淇淋</option>
+              <option value="第三集｜快速復熱">第三集｜快速復熱</option>
+            </select>
+          </div>
         </div>
         <div class="fg">
           <label>所在地區 *</label>
@@ -957,26 +1016,42 @@
               <option value="">-- 請選擇 --</option>
               <option>台北市</option>
               <option>新北市</option>
+              <option>基隆市</option>
+              <option>宜蘭縣</option>
               <option>桃園市</option>
+              <option>新竹市</option>
+              <option>新竹縣</option>
+              <option>苗栗縣</option>
               <option>台中市</option>
+              <option>彰化縣</option>
+              <option>南投縣</option>
+              <option>雲林縣</option>
+              <option>嘉義市</option>
+              <option>嘉義縣</option>
               <option>台南市</option>
               <option>高雄市</option>
-              <option>其他</option>
+              <option>屏東縣</option>
+              <option>花蓮縣</option>
+              <option>台東縣</option>
+              <option>澎湖縣</option>
+              <option>金門縣</option>
+              <option>連江縣</option>
             </select>
           </div>
         </div>
-        <input type="hidden" name="_subject" value="大店長晨會 - 新的設備團購預約">
+        <input type="hidden" name="_subject" value="大店長晨會 - 新的設備團購諮詢">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_next" value="../success.html">
-        <button type="submit" class="form-submit">提交預約 → 24小時內聯繫</button>
+        <button type="submit" class="form-submit">提交諮詢</button>
       </form>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
+    <p>※ 主辦單位保留隨時修正、暫停、終止或解釋本活動之最終權利，並以本活動網站公告為準。</p>
     <p>※ 以上為大店長合作限定報價，均為未稅價格</p>
-    <p>※ 活動優惠至 2025/6/30 止｜設備庫存與規格以現場確認為準</p>
+    <p>※ 活動優惠至 2026/7/31 止，結束後恕不適用</p>
   </footer>
 
   <!-- BOTTOM BAR -->
@@ -1033,11 +1108,11 @@
         <div class="modal-footer-prices">
           <div class="modal-footer-price-item">
             <span class="modal-footer-price-lbl">建議售價</span>
-            <span class="modal-footer-msrp-val" id="modal-footer-msrp"></span>
+            <span class="modal-footer-msrp-val" id="modal-footer-msrp"></span>（未稅）
           </div>
           <div class="modal-footer-price-item" style="text-align:right">
             <span class="modal-footer-sale-lbl">團購優惠</span>
-            <span class="modal-footer-sale-val" id="modal-footer-sale"></span>
+            <span class="modal-footer-sale-val" id="modal-footer-sale"></span>（未稅）
           </div>
         </div>
         <button class="modal-add-btn add" id="modal-add-btn"></button>
@@ -1048,7 +1123,17 @@
   <script>
     /* ─── DATA ─────────────────────────────────── */
     const bundles = [
-      { id: 'b1', name: '小坪數咖啡店', desc: '日需 100-300 杯｜Dr.Coffee F30 全自動咖啡機 + Samantha II 智慧手沖機 + Aries 磨豆機 + U500 桌下型洗碗機 + Sota 快速微波烤箱 + SC100 製冰機｜咖啡萃取、手沖、現磨、快速復熱與清洗一次到位', msrp: 811300, discounted: 665805 }
+      { id: 'b1', name: 'EP1 咖啡廳創業配置',
+        tags: ['咖啡廳', '咖啡麵包店', '早午餐店'],
+        items: [
+          'Dr.Coffee F30 全自動咖啡機',
+          'Hiroia Samantha II 智慧型商用手沖咖啡機',
+          'Mx. COOL Aries 磨豆機',
+          'Meiko U500 桌下型洗碗機',
+          'Turbochef Sota 快速微波烤箱',
+          '久景 SC100 製冰機'
+        ],
+        msrp: 811300, discounted: 665805 }
     ];
 
     const equipments = [
@@ -1214,14 +1299,22 @@
           </div>
           <div class="acc-body">
             <div class="acc-inner">
-              <p class="acc-desc">${b.desc}</p>
+              <div class="bundle-img">
+                ${b.img ? `<img src="${b.img}" alt="${b.name}">` : '＋ 待置入照片'}
+              </div>
+              <div class="bundle-tags">
+                ${b.tags.map(t => `<span class="bundle-tag">#${t}</span>`).join('')}
+              </div>
+              <ul class="bundle-items">
+                ${b.items.map(item => `<li>${item}</li>`).join('')}
+              </ul>
               <div class="acc-prices" style="grid-template-columns:repeat(2,1fr);">
                 <div class="acc-price-item">
-                  <div class="acc-price-lbl">建議售價</div>
+                  <div class="acc-price-lbl">建議售價（未稅）</div>
                   <div class="acc-price-val strike">$${b.msrp.toLocaleString()}</div>
                 </div>
                 <div class="acc-price-item">
-                  <div class="acc-price-lbl">團購優惠</div>
+                  <div class="acc-price-lbl">團購優惠（未稅）</div>
                   <div class="acc-price-val red">$${b.discounted.toLocaleString()}</div>
                 </div>
               </div>
@@ -1289,8 +1382,8 @@
               ${eq.brand ? `<div class="eq-brand">${eq.brand}</div>` : ''}
               <div class="eq-model">${eq.model}</div>
               <div class="eq-price-labeled">
-                <div class="eq-price-msrp">建議售價：$${eq.msrp.toLocaleString()}</div>
-                <div class="eq-price-sale">團購優惠價：<span>$${eq.discounted.toLocaleString()}</span></div>
+                <div class="eq-price-msrp">建議售價：<span style="white-space:nowrap">$${eq.msrp.toLocaleString()}（未稅）</span></div>
+                <div class="eq-price-sale">團購優惠價：<span style="white-space:nowrap"><span>$${eq.discounted.toLocaleString()}</span>（未稅）</span></div>
               </div>
               <div class="eq-foot">
                 <button class="eq-detail-btn" onclick="event.stopPropagation();openModal(${eq.id})">查看詳情 ›</button>
@@ -1469,6 +1562,25 @@
     renderTabs();
     renderEquipmentList();
     updateSummary();
+
+    (function() {
+      const deadline = new Date('2026-07-31T23:59:59+08:00');
+      function tick() {
+        const diff = deadline - Date.now();
+        if (diff <= 0) {
+          document.querySelector('.deadline-pill').innerHTML = '活動已結束';
+          return;
+        }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        document.getElementById('cd-days').textContent = d;
+        document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+        document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+      }
+      tick();
+      setInterval(tick, 60000);
+    })();
   </script>
 </body>
 </html>
